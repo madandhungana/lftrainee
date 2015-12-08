@@ -1,0 +1,40 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+.box {
+	position:relative;
+	width:1000px;
+	height: 600px;
+	border: 1px solid blue;
+	
+	float:left;
+	//position: absolute;
+	//left: 0px;
+	//top: 0px;
+}
+.small-box{
+	position:absolute;
+	background-color:green;
+	left: 0px;
+	top: 0px;
+}
+.black {
+	background-color: black;
+}
+.whole{
+	width:1000px;
+	height:600px;
+
+}
+button{
+	
+}
+.inputs{
+	
+}
+.flt-right{
+	float:right;
+	
+	}

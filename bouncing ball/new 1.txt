@@ -1,0 +1,30 @@
+var balls = document.getElementsByClassName("small-div");
+var animator=[],xdef=[],ydef=[],x=[],y=[];
+
+for(var i=0;i<balls.length;i++){
+	animator[i]=new Animator(balls[i]);
+	var ran1=animator[i].getRandomInt(0,970);
+	var ran2=animator[i].getRandomInt(0,570);
+	xdef[i]=animator[i].getRandomInt(1,2);
+	ydef[i]=animator[i].getRandomInt(1,2);
+	x[i]=ran1;
+	y[i]=ran2;
+	balls[i].style.left=ran1+'px';
+	balls[i].style.top=ran2+'px';
+}
+for(var i=0;i<balls.length;i++){
+animator[i].fall({left: x[i], tope: y[i],leftd:xdef[i],topd:ydef[i]},5);
+//	animator[1].fall({left: 20, tope: 10,leftd:4,topd:4},2000);
+	//animator[0].fall({left: 80, tope: 10,leftd:-4,topd:-4},2000);
+}
+function fall(){
+	for(var i=0;i<balls.length;i++){
+		animator[i].check();
+		for(var j=i+1;j<balls.length;j++){
+			animator[i].checkCol(animator[j]);
+		}
+		animator[i].anime();
+		animator[i].setFinal();
+	}
+}
+setInterval(fall,1);

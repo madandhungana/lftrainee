@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title></title>
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+		<div class="main">
+			<div class="game-div">
+			
+			</div>
+			<div class="score">Score :<span class="currentScore"> 0</span></div>
+			<div class="game-over">Game Over</br>Score :<span class="currentScore">0</span></div>
+		</div>
+		<script src="js/Animate.js"></script>
+		<script src="js/Player.js"></script>
+		<script src="js/Box.js"></script>
+		<script>
+			var gameDiv=document.getElementsByClassName('game-div')[0];
+			var play=document.getElementsByClassName('player')[0];
+			var anim=new Animate(gameDiv);
+			
+			
+			anim.animate("bottom",-5,10);
+		</script>
+	</body>
+</html>

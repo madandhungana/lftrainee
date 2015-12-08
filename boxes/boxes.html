@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title></title>
+		<link href="css/boxes.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+		<div onmousemove="getPosition();" onmousedown="getSpeed();" onmouseup="start()" class="whole">
+		
+		
+		
+		
+		</div>
+		</br>Velocity:<input type="text" class="inputs"/>
+		Angle:<input type="text" class="inputs"/>
+		<button class="go">GO</button>
+		
+		<script src="js/Box.js"></script>
+		<script src="js/BoxAnimation.js"></script>
+		<script type="text/javascript">
+
+var box1 = new Box();
+box1.element.setAttribute("class", "box black");
+box1.appendTo(document.getElementsByClassName("whole")[0]);
+var smallboxes=new BoxAnimation();
+
+
+smallboxes.init();
+//smallboxes.animate();
+smallboxes.animate();
+var button=document.getElementsByClassName('go')[0];
+button.setAttribute('onclick','smallboxes.start();');
+function getPosition(){
+var x = event.clientX;     
+var y = event.clientY; 
+smallboxes.setPosition(x,y);
+}
+var counter=0;
+var intervalID;
+function getSpeed(){
+	intervalID=setInterval(function(){
+		counter++;
+		smallboxes.setSpeed(counter);
+	},20);
+}
+function start(){
+clearInterval(intervalID);
+smallboxes.start();
+}
+	</script>
+	</body>
+</html>

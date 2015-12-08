@@ -1,0 +1,52 @@
+.main{
+	position:relative;
+	margin: 0px auto;
+	height:600px;
+	width:300px;
+	background:black;
+	overflow:hidden;
+}
+.game-div{
+	position:absolute;
+	bottom:0px;
+	height:1000000px;
+	width:300px;
+	background:url('../images/road2.png');
+//background-repeat: repeat-y;
+}
+.player{
+	position:absolute;
+	bottom:10px;
+	left:850px;
+	height:50px;
+	width:50px;
+	background:url('../images/car.png');
+//	background:red;
+}
+.obs{
+	height:50px;
+	width:50px;
+	background:blue;
+	position:absolute;
+	left:125px;
+	background:url('../images/car2.png');
+}
+.score{
+	position:absolute;
+	height:20px;
+	width:100px;
+	color:white;
+	//background:green;
+}
+.game-over{
+	position:absolute;
+	height:70px;
+	width:100px;
+	left:100px;
+	top:250px;
+	background:white;
+	font-size:20px;
+	text-align:center;
+	border:3px solid blue;
+	display:none;
+}

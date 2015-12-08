@@ -1,0 +1,19 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+.main-div{
+		position:relative;
+		width:1000px;
+		height:600px;
+		margin:0 auto;
+		background:black;
+}
+.small-div{
+		position:absolute;
+		width:30px;
+		height:30px;
+		background: url("../images/ball.ico") 0 50% no-repeat;
+		background-size:100%;
+		
+}

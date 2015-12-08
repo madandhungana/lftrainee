@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Slider 1</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+<style>
+
+</style>
+
+<div class="slider">
+	<div class="sliderLong" id="img1">
+		<img src="images/img1.jpg" alt="" />
+		<img src="images/img2.jpg" alt="" />
+		<img src="images/img3.jpg" alt="" />
+		<img src="images/img2.jpg" alt="" />
+	</div>
+	
+	<div class="nav">
+		<a href="#"><img src="images/forward2.png" alt="" class="left" id="left" onclick="leftClicked();"/></a>
+		<a href="#"><img src="images/next2.png" alt="" class="right" id="right" onclick="rightClicked();"/></a>
+	</div>
+	<div class="img-select">
+		
+	</div>
+</div>
+<script type="text/javascript" src="js/anim2.js"></script>
+<script>
+	var img=document.getElementById('img1');
+
+var count=1;
+var animator = new Animator(img);
+var sliderLong=document.getElementsByClassName("sliderLong")[0];
+slider=sliderLong.children;
+var left=document.getElementById('left');
+var right=document.getElementById('right');
+var imgSelect=document.getElementsByClassName("img-select")[0];
+var img=[];
+var a=[];
+for(i=1;i<=slider.length;i++){
+	img[i]=document.createElement("img");
+	a[i]=document.createElement('a');
+	a[i].href='#';
+	img[i].setAttribute("id","img"+i);
+	img[i].setAttribute("src","images/inactive.png");
+	img[i].setAttribute("onclick","imgClicked("+i+");");
+	//console.log(img[i]);
+	a[i].appendChild(img[i]);
+	imgSelect.appendChild(a[i]);
+}
+
+setTimeout(check,0);
+b=setInterval(anim,2000);
+
+function check(){
+	
+	for(i=1;i<=slider.length;i++){
+		img[i].setAttribute("src","images/inactive.png");
+	}
+	img[count].setAttribute("src","images/active.png");
+	if(count==1){
+		left.style.display='none';
+		right.style.display='';
+	}else if(count==slider.length){
+		right.style.display='none';
+		left.style.display='';
+	}else{
+		left.style.display='';
+		right.style.display='';
+	}
+		
+}
+function anim(){
+	setTimeout(check,0);
+	if(count==slider.length){
+		animator.animate("left", (count-1)*900, 1000);
+		count=1;
+	
+	}
+	else{
+		animator.animate("left", -900, 1000);
+		count++;
+	}
+	
+}
+
+function leftClicked(){
+	//if(parseInt(sliderLong.style.left)%900==0){
+
+	if(parseInt(sliderLong.style.left)%900!=0){
+		clearInterval(b);
+		
+		animator.finish(0);
+		count=count-1	;
+		check();
+		b=setInterval(anim,2000);
+	}
+		
+		else{
+			count--;
+			forClicked(900);
+		}
+		
+	//}
+}
+
+function rightClicked(){
+//	if(parseInt(sliderLong.style.left)%900==0){
+		
+		
+		if(parseInt(sliderLong.style.left)%900!=0){
+			clearInterval(b);
+			
+			animator.finish(-900);
+			b=setInterval(anim,2000);
+		}
+		else{
+		count++;
+		forClicked(-900);
+		}
+			
+	//}
+}
+
+function imgClicked(img1){
+	if(parseInt(sliderLong.style.left)%900==0){
+		var mul=(count-img1)*900;
+		count=img1;
+		forClicked(mul);
+	}
+}
+function forClicked(unit){
+		clearInterval(b);
+		//count++;
+		check();
+		animator.animate("left",unit, 1000);
+		b=setInterval(anim,2000);
+	}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
