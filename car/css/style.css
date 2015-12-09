@@ -50,3 +50,11 @@
 	border:3px solid blue;
 	display:none;
 }
+.bullet{
+	height:50px;
+	width:50px;
+	
+	position:absolute;
+	background:url('../images/rocket.png');
+	
+}

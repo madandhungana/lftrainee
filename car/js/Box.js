@@ -1,6 +1,6 @@
 function Box() {
 	this.element = document.createElement("div");
-	this.bottom;
+	this.tope;
 	var that=this;
 	this.x=0;
 	this.appendTo = function(parentElement) {
@@ -11,11 +11,25 @@ function Box() {
 		this.element.setAttribute("class", 
 		this.element.getAttribute("class") + " " + className);
 	}
-this.setPosition=function(height,left){
-	that.element.style.bottom=height+'px';
-	that.bottom=parseInt(that.element.style.bottom);
-	that.element.style.left=100*(left)+25+'px';
-	that.x=100*left+25;
-//	console.log(that.element.style.bottom);
-}
+	
+	this.setPosition = function(height, left){
+		that.element.style.top = height + 'px';
+		that.tope = parseInt(that.element.style.top);
+		that.element.style.left = left + 'px';
+		that.x = left;
 	}
+	
+	this.move = function(){
+		that.tope += 4;
+		that.element.style.top = that.tope + 'px';
+	}
+	
+	this.hitTest = function(obstacle){
+		//console.log(obstacle.bottom,that.tope);
+		if((Math.abs(that.x - obstacle.x) <= 50) && (Math.abs(obstacle.bottom + that.tope) >= 550)){
+			return true;
+		}
+		else 
+		return false; 
+	}
+}
